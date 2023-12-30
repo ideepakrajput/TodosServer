@@ -28,11 +28,6 @@ const sql = `
 `;
 // db.run(sql)
 
-const addIsCompleteColumnQuery = `
-    ALTER TABLE todos
-    ADD COLUMN isComplete BOOLEAN DEFAULT false;
-`;
-
 // Add
 app.post("/todo", (req, res) => {
     const { task } = req.body;
