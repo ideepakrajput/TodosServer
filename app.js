@@ -10,7 +10,7 @@ const PORT = 8000 || process.env.PORT;
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(cors());
+app.use(cors());
 
 const db = new sqlite.Database("./todo.db", sqlite.OPEN_READWRITE, (err) => {
     if (err) {
