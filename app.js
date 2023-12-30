@@ -92,7 +92,7 @@ app.put("/todo", (req, res) => {
 })
 
 // Delete
-app.delete("/todo", (req, res) => {
+app.post("/delete-todo", (req, res) => {
     const { ID } = req.body;
     try {
         let sql = "DELETE FROM todos WHERE ID = ?";
