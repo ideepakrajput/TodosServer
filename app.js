@@ -22,11 +22,16 @@ const db = new sqlite.Database("./todo.db", sqlite.OPEN_READWRITE, (err) => {
 const sql = `
     CREATE TABLE todos (
         ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        task
+        task,
+        isComplete BOOLEAN DEFAULT false
     )
 `;
 // db.run(sql)
 
+const addIsCompleteColumnQuery = `
+    ALTER TABLE todos
+    ADD COLUMN isComplete BOOLEAN DEFAULT false;
+`;
 
 // Add
 app.post("/todo", (req, res) => {
