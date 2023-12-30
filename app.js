@@ -111,6 +111,25 @@ app.post("/delete-todo", (req, res) => {
     }
 })
 
+app.post("/is-complete", (req, res) => {
+    const { ID, isComplete } = req.body;
+    try {
+        let sql = "UPDATE todos SET isComplete = ? WHERE ID = ?";
+        db.run(sql, [isComplete, ID], (err) => {
+            if (err) return res.json({ status: 401, success: false, error: err })
+        })
+        return res.json({
+            status: 200,
+            success: true,
+        })
+    } catch (error) {
+        return res.json({
+            status: 400,
+            success: false,
+        })
+    }
+})
+
 
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}...`);
