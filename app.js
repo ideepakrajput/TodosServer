@@ -98,10 +98,10 @@ app.delete("/todo", (req, res) => {
         let sql = "DELETE FROM todos WHERE ID = ?";
         db.run(sql, [ID], (err) => {
             if (err) return res.json({ status: 401, success: false, error: err })
-        })
-        return res.json({
-            status: 200,
-            success: true,
+            return res.json({
+                status: 200,
+                success: true,
+            })
         })
     } catch (error) {
         return res.json({
